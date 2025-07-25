@@ -29,9 +29,17 @@ const getUserByEmail = async (email) => {
   });
 };
 
+const deletePost = async (id) => {
+  return await prisma.post.delete({
+    where: { id },
+  });
+};
+
 module.exports = {
   getAllPosts,
   getPostById,
   createPost,
-  getUserByEmail
+  getUserByEmail,
+  deletePost,
+  
 };
