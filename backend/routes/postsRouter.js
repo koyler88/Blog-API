@@ -6,6 +6,8 @@ const postsController = require('../controllers/postsController')
 postsRouter.get('/', postsController.getAllPosts)
 // Get single post
 postsRouter.get('/:id', postsController.getPostById)
+// Create Post
+postsRouter.post('/create', postsController.createPost)
 
 
 

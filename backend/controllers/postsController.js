@@ -27,7 +27,25 @@ const getPostById = async (req, res) => {
   }
 };
 
+const createPost = async (req, res) => {
+  const { title, content } = req.body;
+  const authorId = 88;
+  let { published } = req.body;
+
+  // Convert string to boolean
+  published = published === "true";
+
+  try {
+    const newPost = await db.createPost(title, content, published, authorId);
+    res.status(201).json(newPost);
+  } catch (error) {
+    console.error("Error creating post:", error);
+    res.status(500).json({ error: "Failed to create post" });
+  }
+};
+
 module.exports = {
   getAllPosts,
   getPostById,
+  createPost,
 };
