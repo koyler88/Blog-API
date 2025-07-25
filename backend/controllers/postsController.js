@@ -48,15 +48,36 @@ const deletePost = async (req, res) => {
   const id = parseInt(req.params.id);
 
   if (isNaN(id)) {
-    return res.status(400).json({ error: "Invalid post ID"})
+    return res.status(400).json({ error: "Invalid post ID" });
   }
 
   try {
     const deletePost = await db.deletePost(id);
-    res.status(200).json({ message: "Post deleted"});
+    res.status(200).json({ message: "Post deleted" });
   } catch (error) {
     console.error("Error deleting post:", error);
     res.status(500).json({ error: "Failed to delete post" });
+  }
+};
+
+const updatePost = async (req, res) => {
+  const id = parseInt(req.params.id);
+  const { title, content } = req.body;
+  let { published } = req.body;
+
+  // Convert string to boolean
+  published = published === "true";
+
+  if (isNaN(id)) {
+    return res.status(400).json({ error: "Invalid post ID" });
+  }
+
+  try {
+    const updatedPost = await db.updatePost(id, title, content, published);
+    res.status(200).json(updatedPost);
+  } catch (error) {
+    console.error("Error updating post:", error);
+    res.status(500).json({ error: "Failed to update post" });
   }
 };
 
@@ -65,4 +86,6 @@ module.exports = {
   getPostById,
   createPost,
   deletePost,
+  updatePost,
+  
 };

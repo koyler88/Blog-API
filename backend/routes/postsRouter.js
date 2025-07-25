@@ -11,6 +11,8 @@ postsRouter.get('/:id', postsController.getPostById)
 postsRouter.post('/create', authenticateToken, postsController.createPost)
 // Delete Post
 postsRouter.delete('/delete/:id', authenticateToken, postsController.deletePost)
+// Update Post
+postsRouter.put('/update/:id', authenticateToken, postsController.updatePost)
 
 
 
