@@ -6,7 +6,14 @@ const getAllPosts = async () => {
   return posts
 };
 
+const getPostById = async (id) => {
+    return await prisma.post.findUnique({
+        where: { id },
+    })
+}
+
 module.exports = {
     getAllPosts,
-    
+    getPostById,
+
 }

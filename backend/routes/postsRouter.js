@@ -4,6 +4,8 @@ const postsController = require('../controllers/postsController')
 
 // Get all posts
 postsRouter.get('/', postsController.getAllPosts)
+// Get single post
+postsRouter.get('/:id', postsController.getPostById)
 
 
 
