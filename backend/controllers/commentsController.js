@@ -33,8 +33,47 @@ const createComment = async (req, res) => {
   }
 };
 
+const updateComment = async (req, res) => {
+  const commentId = parseInt(req.params.commentId);
+  const { content, name, email } = req.body;
+
+  if (isNaN(commentId)) {
+    return res.status(400).json({ error: "Invalid comment ID" });
+  }
+
+  try {
+    const updatedComment = await db.updateComment(
+      commentId,
+      content,
+      name,
+      email
+    );
+    return res.json(updatedComment);
+  } catch (error) {
+    console.log("Error updating comment:", error);
+    return res.status(500).json({ error: "Failed to update comment" });
+  }
+};
+
+const deleteComment = async (req, res) => {
+  const commentId = parseInt(req.params.commentId);
+
+  if (isNaN(commentId)) {
+    return res.status(400).json({ error: "Invalid comment ID" });
+  }
+
+  try {
+    const deletedComment = await db.deleteComment(commentId);
+    return res.json({ message: "Comment Deleted" });
+  } catch (error) {
+    console.log("Error deleting comment", error);
+    return res.status(500).json({ error: "Failed to delete comment" });
+  }
+};
+
 module.exports = {
   getCommentsByPost,
   createComment,
-  
+  updateComment,
+  deleteComment,
 };

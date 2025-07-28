@@ -56,10 +56,31 @@ const createComment = async (postId, content, name, email) => {
       postId: postId,
       name: name,
       content: content,
-      email: email
-    }
-  })
-}
+      email: email,
+    },
+  });
+};
+
+const updateComment = async (commentId, content, name, email) => {
+  return await prisma.comment.update({
+    where: {
+      id: commentId,
+    },
+    data: {
+      content: content,
+      email: email,
+      name: name,
+    },
+  });
+};
+
+const deleteComment = async (commentId) => {
+  return await prisma.comment.delete({
+    where: {
+      id: commentId,
+    },
+  });
+};
 
 module.exports = {
   getAllPosts,
@@ -69,5 +90,7 @@ module.exports = {
   deletePost,
   updatePost,
   getCommentsByPost,
-  createComment
+  createComment,
+  updateComment,
+  deleteComment,
 };

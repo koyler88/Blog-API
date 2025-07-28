@@ -11,13 +11,13 @@ postsRouter.get("/:id", postsController.getPostById);
 // Create Post
 postsRouter.post("/create", authenticateToken, postsController.createPost);
 // Delete Post
-postsRouter.delete("/delete/:id", authenticateToken, postsController.deletePost);
+postsRouter.delete("/:id", authenticateToken, postsController.deletePost);
 // Update Post
-postsRouter.put("/update/:id", authenticateToken, postsController.updatePost);
+postsRouter.put("/:id", authenticateToken, postsController.updatePost);
 
 // Get comments for single post
 postsRouter.get("/:id/comments", commentsController.getCommentsByPost);
 // Create comment on post
-postsRouter.post('/:id/comments', commentsController.createComment)
+postsRouter.post('/:id/comments', commentsController.createComment);
 
 module.exports = postsRouter;
