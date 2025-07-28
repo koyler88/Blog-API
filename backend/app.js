@@ -6,6 +6,7 @@ const cors = require("cors");
 const postsRouter = require("./routes/postsRouter");
 const authRouter = require("./routes/authRouter");
 const commentsRouter = require("./routes/commentsRouter");
+const errorHandler = require("./middleware/errorHandler")
 
 // Middleware to parse incoming request bodies
 app.use(express.urlencoded({ extended: true }));
@@ -19,5 +20,7 @@ app.use("/posts", postsRouter);
 app.use("/auth", authRouter);
 // Comments Router
 app.use("/comments", commentsRouter);
+
+app.use(errorHandler)
 
 app.listen(3000, () => console.log("App running on port 3000"));
