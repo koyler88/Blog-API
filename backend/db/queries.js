@@ -42,6 +42,24 @@ const updatePost = async (id, title, content, published) => {
   });
 };
 
+const getCommentsByPost = async (id) => {
+  return await prisma.comment.findMany({
+    where: {
+      postId: id,
+    },
+  });
+};
+
+const createComment = async (postId, content, name, email) => {
+  return await prisma.comment.create({
+    data: {
+      postId: postId,
+      name: name,
+      content: content,
+      email: email
+    }
+  })
+}
 
 module.exports = {
   getAllPosts,
@@ -50,5 +68,6 @@ module.exports = {
   getUserByEmail,
   deletePost,
   updatePost,
-  
+  getCommentsByPost,
+  createComment
 };

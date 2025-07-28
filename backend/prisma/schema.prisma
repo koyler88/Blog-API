@@ -31,7 +31,6 @@ model Comment {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   content   String   
-  published Boolean  @default(false)
   name      String
   email     String?
   post      Post     @relation(fields: [postId], references: [id])
