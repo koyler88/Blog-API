@@ -47,24 +47,29 @@ This is the backend API for a blog platform built with Node.js, Express, Prisma 
 
 2. Install Dependencies: 
 
+    ```bash
     npm install
 
 3. Set up your .env file with the following environment variables:
 
+    ```.env
     DATABASE_URL=postgresql://user:password@host:port/database
     JWT_SECRET=your_jwt_secret_key
     PORT=3000
 
 4. Run Prisma migrations to set up your database schema:
 
+    ```bash
     npx prisma migrate dev --name init
 
 5. Seed your database with an initial user (optional, create your user script):
 
+    ```bash
     node scripts/createUser.js
 
 6. Start the server
 
+    ```bash
     npm run dev
 
 The server will run on http://localhost:3000
@@ -101,19 +106,21 @@ Centralized error handling middleware for API responses.
 
 ## Project Structure
 
-backend/
-├── controllers/
-├── db/
-│   ├── prismaClient.js
-│   └── queries.js
-├── middleware/
-├── routes/
-├── scripts/
-├── prisma/
-│   └── schema.prisma
-├── app.js
-├── package.json
-└── .env
+    ```pgsql
+    backend/
+    ├── controllers/
+    ├── db/
+    │   ├── prismaClient.js
+    │   └── queries.js
+    ├── middleware/
+    ├── routes/
+    ├── scripts/
+    ├── prisma/
+    │   └── schema.prisma
+    ├── app.js
+    ├── package.json
+    └── .env
+    
 ## Notes
 Currently, only one user (admin) is supported for post creation and protected routes.
 
