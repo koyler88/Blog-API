@@ -32,8 +32,13 @@ const createPost = async (req, res) => {
   const authorId = 88;
   let { published } = req.body;
 
-  // Convert string to boolean
-  published = published === "true";
+  // Handle both string and boolean inputs for published
+  if (typeof published === "string") {
+    published = published === "true";
+  } else if (typeof published !== "boolean") {
+    // Default to false if published is missing or invalid type
+    published = false;
+  }
 
   try {
     const newPost = await db.createPost(title, content, published, authorId);
@@ -65,8 +70,13 @@ const updatePost = async (req, res) => {
   const { title, content } = req.body;
   let { published } = req.body;
 
-  // Convert string to boolean
-  published = published === "true";
+  // Handle both string and boolean inputs for published
+  if (typeof published === "string") {
+    published = published === "true";
+  } else if (typeof published !== "boolean") {
+    // Default to false if published is missing or invalid type
+    published = false;
+  }
 
   if (isNaN(id)) {
     return res.status(400).json({ error: "Invalid post ID" });
@@ -87,5 +97,4 @@ module.exports = {
   createPost,
   deletePost,
   updatePost,
-  
 };

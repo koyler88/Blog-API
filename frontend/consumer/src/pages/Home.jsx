@@ -9,7 +9,12 @@ export default function Home() {
 
   useEffect(() => {
     fetchPosts()
-      .then(setPosts)
+      .then((allPosts) => {
+        const publishedPosts = allPosts.filter(
+          (post) => post.published === true
+        );
+        setPosts(publishedPosts);
+      })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
   }, []);
@@ -22,8 +27,8 @@ export default function Home() {
       <section className="hero">
         <h1 className="hero-title">Blue Valley Blog</h1>
         <p className="hero-desc">
-          Fresh perspectives on technology, sustainability, and innovation. Explore
-          our latest articles below.
+          Fresh perspectives on technology, sustainability, and innovation.
+          Explore our latest articles below.
         </p>
       </section>
       <div className="container home-container">
