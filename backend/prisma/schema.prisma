@@ -33,7 +33,7 @@ model Comment {
   content   String   
   name      String
   email     String?
-  post      Post     @relation(fields: [postId], references: [id])
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId    Int
 }
 
