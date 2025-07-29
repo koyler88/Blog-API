@@ -1,12 +1,67 @@
-# React + Vite
+# Blue Valley Blog – Consumer Site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the public-facing frontend for the Blue Valley Blog, built with React and Vite.  
+Visitors can browse published blog posts, read articles, and leave comments.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Modern, responsive design with a blue/gray color scheme
+- Browse all published blog posts
+- Read full articles with author and date info
+- Leave comments on posts (no login required)
+- Built with React, React Router, and Vite
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js (v16+ recommended)
+- The backend API running at `http://localhost:3000`
+
+### Installation
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+3. Open your browser at [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```
+src/
+  api/         # API helper functions
+  pages/       # React page components (Home, PostDetail)
+  styles/      # CSS styles
+  App.jsx      # Main app component with routing
+  main.jsx     # Entry point
+```
+
+## Environment
+
+- Expects the backend API to be running at `http://localhost:3000`
+- No authentication required for consumers
+
+## License
+
+MIT
