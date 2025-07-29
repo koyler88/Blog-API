@@ -18,19 +18,26 @@ export default function Home() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="container home-container">
-      <h1>All Posts</h1>
-      <div className="posts-list">
-        {posts.map((post) => (
-          <div className="post-card" key={post.id}>
-            <h2>{post.title}</h2>
-            <p>{post.content.slice(0, 100)}...</p>
-            <Link to={`/posts/${post.id}`} className="read-more">
-              Read More →
+    <>
+      <section className="hero">
+        <h1 className="hero-title">Blue Valley Blog</h1>
+        <p className="hero-desc">
+          Fresh perspectives on technology, sustainability, and innovation. Explore
+          our latest articles below.
+        </p>
+      </section>
+      <div className="container home-container">
+        {/* <h1>All Posts</h1> */}
+        <div className="posts-list">
+          {posts.map((post) => (
+            <Link to={`/posts/${post.id}`} className="post-card" key={post.id}>
+              <h2>{post.title}</h2>
+              <p>{post.content.slice(0, 100)}...</p>
+              <span className="read-more">Read More →</span>
             </Link>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

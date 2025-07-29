@@ -1,15 +1,30 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import PostDetail from "./pages/PostDetail";
-// import Login from "./pages/Login";
+
+function Header() {
+  const location = useLocation();
+  return (
+    <header className="site-header">
+      <div className="site-header-inner">
+        <Link to="/" className="site-title">Blue Valley Blog</Link>
+        <nav className="site-nav">
+          <Link to="/" className={location.pathname === "/" ? "active" : ""}>Home</Link>
+        </nav>
+      </div>
+    </header>
+  );
+}
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/posts/:id" element={<PostDetail />} />
-      {/* <Route path="/login" element={<Login />} /> */}
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/posts/:id" element={<PostDetail />} />
+      </Routes>
+    </>
   );
 }
 

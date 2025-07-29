@@ -58,13 +58,23 @@ export default function PostDetail() {
   return (
     <div className="container post-detail">
       <h1>{post.title}</h1>
+      <div className="post-meta">
+        {/* Replace with real author/date if available */}
+        By <strong>Blue Valley Team</strong> ·{" "}
+        <span>
+          {new Date(post.createdAt || Date.now()).toLocaleDateString()}
+        </span>
+      </div>
       <p>{post.content}</p>
 
       <hr />
       <h3>Comments</h3>
 
       {!showForm && (
-        <button onClick={() => setShowForm(true)} style={{ marginBottom: "12px" }}>
+        <button
+          onClick={() => setShowForm(true)}
+          style={{ marginBottom: "12px" }}
+        >
           Leave a Comment
         </button>
       )}
